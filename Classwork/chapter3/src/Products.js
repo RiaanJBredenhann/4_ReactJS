@@ -1,21 +1,15 @@
-// imports the Component class from react library which we use to extend
 import React, { Component } from 'react';
-
-// we are able to use the render() function in the new Products class
-// since it extaends the Component class.
 class Products extends Component {
     render() {
-        return (
-            <div>
-                <h2>
-                    Products
-                </h2>
-                <h2>
-                    Courses
-                </h2>
-            </div>
-        );
-    }
+      const products = ["Learning React", "Pro React", "Beginning React"];
+      const listProducts = products.map((product) => (
+        <li key={product.toString()}>{product}</li>
+      ));
+    return (
+      <div>
+        <ul>{listProducts}</ul>
+      </div>
+    );
+  }
 }
-
 export default Products;

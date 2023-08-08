@@ -1,20 +1,16 @@
-import React, { Component } from 'react';
-import Products from './Products';
+import React, { Component } from "react";
+import Products from "./Products";
+import { Button } from "react-bootstrap";
 
 class App extends Component {
   render() {
-    const products = ["Learning React", "Pro React", "Beginning React"];
-    const listProducts = products.map((product) =>
-      <li key={product.toString()}>{product}</li>
-    );
     return (
       <div>
         <h1>My First React App!</h1>
         <Products />
-        <div><ul>{listProducts}</ul></div>
+        <Button variant="primary" disabled>Default</Button>
       </div>
     );
   }
 }
-
 export default App;
