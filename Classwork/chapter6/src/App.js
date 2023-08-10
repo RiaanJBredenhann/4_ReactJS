@@ -1,7 +1,7 @@
 import './App.css';
 import React, { Component } from 'react';
 import JumboTronComponent from './JumboTronComponent';
-//import UserForm from './UserForm';
+import UserForm from './UserForm';
 import Products from './Products';
 
 class App extends Component {
@@ -18,6 +18,7 @@ class App extends Component {
           jumbotron component from the outside.
         </JumboTronComponent>
         <Products />
+        <UserForm></UserForm>
       </div>
     );
   }
