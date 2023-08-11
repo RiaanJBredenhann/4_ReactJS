@@ -50,7 +50,7 @@ class GitHub extends Component {
 
         const listUsers = this.state.data.map((user) => 
             <Media key={user.id}>
-                <a href={user.html_url}>
+                <Nav.Link href={`/github/user/${user.login}/${user.id}`}>
                     <img 
                         width={64}
                         height={64}
@@ -58,7 +58,7 @@ class GitHub extends Component {
                         src={user.avatar_url}
                         alt="Generic Placeholder"
                     />
-                </a>
+                </Nav.Link>
                 <Media.Body>
                     <h5>Login: {user.login}</h5>
                     <p>Id: {user.id}</p>
