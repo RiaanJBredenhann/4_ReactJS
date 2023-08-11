@@ -15,7 +15,7 @@ class GitHubUser extends Component {
         return (
             <div>
                 {/* this.props.match.params is an object that holds all the values passed through parameters. 
-                We obtain th parameters by specifying them, in this case ‘login’ and ‘id’. */}
+                    We obtain th parameters by specifying them, in this case ‘login’ and ‘id’. */}
                 <h1>User Login: {this.props.match.params.login}</h1>
                 <h2>User Id: {this.props.match.params.id}</h2>`
                 <Button variant="primary" onClick={this.handleClick}>
