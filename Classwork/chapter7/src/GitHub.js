@@ -15,18 +15,21 @@ class GitHub extends Component {
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+    }
 
-        this.handleSubmit(e) {
-            e.preventDefault();
-            this.setState({
-                isLoading: true
-            });
-            this.getGitHubData(this.state.searchTerm);
-        }
+    //-- this method takes the user input and sets the search term to the value of the input --//
+    handleChange(e) {
+        this.setState({ searchTerm: e.target.value});
+    }
 
-        this.handleChange(e) {
-            this.setState({ searchTerm: e.target.value});
-        }
+    //-- this method takes the user input after submission, removes the loading icon,
+    //   and calls getGitHubData() in order to display all users and their info --//
+    handleSubmit(e) {
+        e.preventDefault();
+        this.setState({
+            isLoading: true
+        });
+        this.getGitHubData(this.state.searchTerm);
     }
 
     //-- method that will return GitHub data from our API endpoint --//
