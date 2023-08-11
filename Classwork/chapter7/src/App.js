@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import JumboTronComponent from './JumboTronComponent';
 import UserForm from './UserForm';
 import Products from './Products';
+import GitHub from './GitHub';
 
 class App extends Component {
   formatName(user) {
@@ -18,7 +19,8 @@ class App extends Component {
           jumbotron component from the outside.
         </JumboTronComponent>
         <Products />
-        <UserForm></UserForm>
+        <UserForm />
+        <GitHub />
       </div>
     );
   }
