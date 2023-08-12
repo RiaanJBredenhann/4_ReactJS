@@ -4,9 +4,9 @@ import JumboTronComponent from './JumboTronComponent';
 import UserForm from './UserForm';
 import Products from './Products';
 import GitHub from './GitHub';
+import GitHubUser from './GitHubUser';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Nav, Navbar } from 'react-bootstrap';
-import GitHubUser from './GitHubUser';
 
 class App extends Component {
   // formatName(user) {
