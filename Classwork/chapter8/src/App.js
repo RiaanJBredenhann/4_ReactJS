@@ -27,13 +27,15 @@ class Header extends Component {
               <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="mr-auto">
                   <Nav.Link href="/">Home</Nav.Link>
-                  <Nav.Link href="/github">GitHub</Nav.Link>                  
+                  <Nav.Link href="/github">GitHub</Nav.Link>  
+                  <Nav.Link href="/">Contact Us</Nav.Link>                
                 </Nav>
               </Navbar.Collapse>
             </Navbar>
             <Switch> 
               <Route path="/github/user/:login/:id" component={GitHubUser} />                                                                
-              <Route path="/github" component={GitHub} />              
+              <Route path="/github" component={GitHub} />
+              <Route path="/contact" component={Contact} />               
               <Route exact path="/" component={Home} />             
               <Route path="/*" component={NotFound} />                       
             </Switch>   
@@ -48,6 +50,16 @@ class Home extends Component {
     return (
       <div>
         Home        
+      </div>
+    )
+  }
+}
+
+class Contact extends Component {
+  render(){
+    return (
+      <div>
+        Contact Us        
       </div>
     )
   }
