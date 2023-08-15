@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import ReactLoading from 'react-loading';
-import { Media, Form, FormGroup, FormControl, Button } from 'react-bootstrap';
-import { Nav, Navbar } from 'react-bootstrap';
+import { Media, Form, FormGroup, FormControl, Button, Nav, Navbar } from 'react-bootstrap';
 
 class GitHub extends Component {
 
@@ -70,7 +69,7 @@ class GitHub extends Component {
         return (
             <div>
                 <Form inline onSubmit={this.handleSubmit}>
-                    <Form.Group contrilId="formInlineName">
+                    <Form.Group controlId="formInlineName">
                         <Form.Control
                             type="text"
                             value={this.state.searchTerm}
