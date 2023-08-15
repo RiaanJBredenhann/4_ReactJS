@@ -3,9 +3,15 @@ import GitHub from './GitHub';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Nav, Navbar } from 'react-bootstrap';
 import GitHubUser from './GitHubUser';
+import * as firebase from 'firebase';
 
+class App extends Component {  
+  
+  constructor() {
+    super();
+    console.log(firebase);
+  }
 
-class App extends Component {       
   render() {        
     return (
       <div>
@@ -14,6 +20,7 @@ class App extends Component {
     );
   }
 }
+
 export default App;
 
 class Header extends Component {
