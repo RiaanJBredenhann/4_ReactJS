@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Table } from 'react-bootstrap';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
@@ -42,9 +43,31 @@ class User extends Component {
     }
 
     render() {
+
+        const listUsers = this.state.users.map((user) =>
+            <tr key={user.key}>
+                <td>{user.username}</td>
+                <td>{user.email}</td>
+                <td>Edit</td>
+                <td>Remove</td>
+            </tr>
+        );
+
         return (
             <div>
-
+                <Table striped bordered hover>
+                    <thead>
+                        <tr>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Edit</th>
+                            <th>Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {listUsers}
+                    </tbody>
+                </Table>
             </div>
         );
     }

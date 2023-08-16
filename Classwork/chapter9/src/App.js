@@ -3,6 +3,7 @@ import GitHub from './GitHub';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Nav, Navbar } from 'react-bootstrap';
 import GitHubUser from './GitHubUser';
+import User from './User';
 //import * as firebase from 'firebase';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
@@ -41,15 +42,17 @@ class Header extends Component {
                 <Nav className="mr-auto">
                   <Nav.Link href="/">Home</Nav.Link>
                   <Nav.Link href="/github">GitHub</Nav.Link>  
-                  <Nav.Link href="/">Contact Us</Nav.Link>                
+                  <Nav.Link href="/">Contact Us</Nav.Link>
+                  <Nav.Link href="/">Users</Nav.Link>                
                 </Nav>
               </Navbar.Collapse>
             </Navbar>
             <Switch> 
+              <Route exact path="/users" component={User} /> 
               <Route path="/github/user/:login/:id" component={GitHubUser} />                                                                
               <Route path="/github" component={GitHub} />
-              <Route path="/contact" component={Contact} />               
-              <Route exact path="/" component={Home} />             
+              <Route path="/contact" component={Contact} /> 
+              <Route exact path="/" component={Home} />                          
               <Route path="/*" component={NotFound} />                       
             </Switch>   
           </div>  
