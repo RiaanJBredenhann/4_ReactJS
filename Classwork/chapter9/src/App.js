@@ -9,6 +9,8 @@ import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
 import 'firebase/compat/database';
 
+import 'bootstrap/dist/css/bootstrap.min.css';
+
 class App extends Component {  
   
   constructor() {
