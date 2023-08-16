@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Table } from 'react-bootstrap';
+import { Table, Button } from 'react-bootstrap';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
 import 'firebase/compat/firestore';
@@ -12,6 +12,14 @@ class User extends Component {
         this.state = {
             users: []
         };
+
+        this.add = this.add.bind(this);
+    }
+
+    //-- method that adds a new user --//
+    //-- this.props.history.push navigates the user to the specified target route --//
+    add(e) {
+        this.props.history.push("/add");
     }
 
     //-- This is where server requests and state updates should occur --//
@@ -55,6 +63,7 @@ class User extends Component {
 
         return (
             <div>
+                <Button variant="primary" onClick={this.add}>Add</Button>
                 <Table striped bordered hover>
                     <thead>
                         <tr>

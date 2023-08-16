@@ -4,6 +4,7 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import { Nav, Navbar } from 'react-bootstrap';
 import GitHubUser from './GitHubUser';
 import User from './User';
+import UserForm from './UserForm';
 //import * as firebase from 'firebase';
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
@@ -43,7 +44,8 @@ class Header extends Component {
                   <Nav.Link href="/">Home</Nav.Link>
                   <Nav.Link href="/github">GitHub</Nav.Link>  
                   <Nav.Link href="/contact">Contact Us</Nav.Link>
-                  <Nav.Link href="/users">Users</Nav.Link>                
+                  <Nav.Link href="/users">Users</Nav.Link>  
+                  <Nav.Link href="/add">Add User</Nav.Link>               
                 </Nav>
               </Navbar.Collapse>
             </Navbar>
@@ -52,7 +54,8 @@ class Header extends Component {
               <Route path="/github/user/:login/:id" component={GitHubUser} />                                                                
               <Route path="/github" component={GitHub} />
               <Route exact path="/contact" component={Contact} /> 
-              <Route exact path="/users" component={User} />                         
+              <Route exact path="/users" component={User} /> 
+              <Route path="/add" component={UserForm} />                        
               <Route path="/*" component={NotFound} />                       
             </Switch>   
           </div>  
