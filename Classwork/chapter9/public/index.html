@@ -44,29 +44,32 @@
       To create a production bundle, use `npm run build` or `yarn build`.
     -->
 
-  <!-- Firebase -->
-  <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-app.js"></script>
-  <script src="https://www.gstatic.com/firebasejs/7.13.2/firebase-analytics.js"></script>
+  <script type="module">
+    // Import the functions you need from the SDKs you need
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
+    import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-analytics.js";
+    // TODO: Add SDKs for Firebase products that you want to use
+    // https://firebase.google.com/docs/web/setup#available-libraries
 
-  <script>
     // Your web app's Firebase configuration
-    var firebaseConfig = {
-      apiKey: "AIzaSyCOxp3etKT0NXT6TECx79EXQ6BorcBxXOM",
-      authDomain: "reactcrud-b819e.firebaseapp.com",
-      databaseURL: "https://reactcrud-b819e.firebaseio.com",
-      projectId: "reactcrud-b819e",
-      storageBucket: "reactcrud-b819e.appspot.com",
-      messagingSenderId: "61064054237",
-      appId: "1:61064054237:web:bd3bb5dd8cbf7599d1a234",
-      measurementId: "G-2Y5SMQ4WL3"
+    // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+    const firebaseConfig = {
+      apiKey: "AIzaSyCSC1VQt-IGuGE-CBk03rl8i3yfdrKsYZo",
+      authDomain: "chapter-9-40bce.firebaseapp.com",
+      projectId: "chapter-9-40bce",
+      storageBucket: "chapter-9-40bce.appspot.com",
+      messagingSenderId: "811685190538",
+      appId: "1:811685190538:web:e856e80281428416cc4673",
+      measurementId: "G-0P1Z5KVSZF"
     };
+
     // Initialize Firebase
-    firebase.initializeApp(firebaseConfig);
-    firebase.analytics();
+    const app = initializeApp(firebaseConfig);
+    const analytics = getAnalytics(app);
   </script>
-  <!--  -->
 
 
+  
 </body>
 
 </html>
