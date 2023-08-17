@@ -7,8 +7,34 @@ import 'firebase/compat/firestore';
 import 'firebase/compat/database';
 
 class UserForm extends Component {
+
+    title;
+    id;
+
     constructor(props) {
         super(props);
+        this.id = this.props.match.params.id;
+        this.title = "New User";
+        this.state = {
+            username: "",
+            email: ""
+        };
+
+        if (this.id) {
+            this.title = "Edit User";
+        }
+    }
+
+    componentDidMount() {
+        if (this.id) {
+            firebase.database().ref('/', + this.id)
+            .on('value', snapshot => {
+                this.setState({
+                    username: snapshot.val().username,
+                    email: snapshot.val().email
+                });
+            });
+        }
     }
 
     render() {

@@ -45,6 +45,7 @@ class Header extends Component {
                   <Nav.Link href="/github">GitHub</Nav.Link>  
                   <Nav.Link href="/contact">Contact Us</Nav.Link>
                   <Nav.Link href="/users">Users</Nav.Link>  
+                  <Nav.Link href="/edit/:id">Edit User</Nav.Link> 
                   <Nav.Link href="/add">Add User</Nav.Link>               
                 </Nav>
               </Navbar.Collapse>
@@ -55,6 +56,7 @@ class Header extends Component {
               <Route path="/github" component={GitHub} />
               <Route exact path="/contact" component={Contact} /> 
               <Route exact path="/users" component={User} /> 
+              <Route path="/edit/:id" component={UserForm} />
               <Route path="/add" component={UserForm} />                        
               <Route path="/*" component={NotFound} />                       
             </Switch>   

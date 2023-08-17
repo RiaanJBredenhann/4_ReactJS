@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Table, Button, Modal } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 
 import firebase from 'firebase/compat/app';
 import 'firebase/compat/auth';
@@ -94,7 +95,11 @@ class User extends Component {
             <tr key={user.key}>
                 <td>{user.username}</td>
                 <td>{user.email}</td>
-                <td>Edit</td>
+                <td>
+                    <Link to={`/edit/${user.key}`}>
+                        Edit
+                    </Link>
+                </td>
                 <td>
                     <Button onClick={this.openDeleteDialog.bind(this, user)}>Remove</Button>
                 </td>
