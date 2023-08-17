@@ -39,25 +39,26 @@ class UserForm extends Component {
     //   i.e. we get our username and email populated from the firebase callback function --//
     componentDidMount() {
         if (this.id) {
-            firebase.database().ref('/', + this.id)
-            .on('value', snapshot => {
-                this.setState({
-                    username: snapshot.val().username,
-                    email: snapshot.val().email
+            firebase.database().ref('/' + this.id)
+                .on('value', snapshot => {
+                    this.setState({
+                        username: snapshot.val().username,
+                        email: snapshot.val().email
+                    });
                 });
-            });
         }
     }
 
     render() {
         return (
             <div>
-               <h1>{this.title}</h1>
+                <h1>{this.title}</h1>
                 <Formik
-                    enableReinitialize = { true }
-                    initialValues={{ 
-                        email: this.state.email, 
-                        username: this.state.username }}
+                    enableReinitialize={true}
+                    initialValues={{
+                        email: this.state.email,
+                        username: this.state.username
+                    }}
                     validate={values => {
                         let errors = {};
                         if (!values.email) {
@@ -77,15 +78,28 @@ class UserForm extends Component {
                         return errors;
                     }}
 
-                    //-- push generates and writes to a new child location with the value supplied
+                    //-- push() generates and writes to a new child location with the value supplied
                     //   It writes to the new child location using a unique key when we stored this key in user.key --//
+
+                    //-- we first check if there is an id
+                    //   If so, we call the update method of firebase.database().ref to update
+                    //   else, which means the form is in Add New User mode, we use the existing code 
+                    //   which calls push() to add the new user object to firebase --//
                     onSubmit={(values, { setSubmitting }) => {
                         setTimeout(() => {
                             alert(JSON.stringify(values, null, 2));
-                            firebase.database().ref('/').push({
-                                username: values.username,
-                                email: values.email
-                            }).then(() => this.props.history.push("/"));
+                            if (this.id) {
+                                firebase.database().ref('/' + this.id).update({
+                                    username: values.username,
+                                    email: values.email
+                                }).then(() => this.props.history.push("/"));
+                            }
+                            else {
+                                firebase.database().ref('/').push({
+                                    username: values.username,
+                                    email: values.email
+                                }).then(() => this.props.history.push("/"));
+                            }
 
                             setSubmitting(false);
                         }, 400);
@@ -94,11 +108,11 @@ class UserForm extends Component {
                     {({ isSubmitting }) => (
                         <Form>
                             <Field type="email" name="email" />
-                            <span style= {{ color:"red", fontWeight:"bold" }}>
+                            <span style={{ color: "red", fontWeight: "bold" }}>
                                 <ErrorMessage name="email" component="div" />
                             </span>
                             <Field type="username" name="username" />
-                            <span style= {{ color:"red", fontWeight:"bold" }}>
+                            <span style={{ color: "red", fontWeight: "bold" }}>
                                 <ErrorMessage name="username" component="div" />
                             </span>
                             <button type="submit" disabled={isSubmitting}>
