@@ -11,6 +11,7 @@ class UserForm extends Component {
     title;
     id;
 
+    //-- we retrieve id from props.match.params.id --//
     constructor(props) {
         super(props);
         this.id = this.props.match.params.id;
@@ -25,6 +26,17 @@ class UserForm extends Component {
         }
     }
 
+    //-- we check if id is null, which means that we arrive at UserForm without a parameter 
+    //   and want to perform adding a new user
+    //   In this case, we use the default title of “New User” and do nothing in componentDidMount --//
+
+    //-- If id is valid (not null), it means that we arrive at UserForm 
+    //   with a parameter and want to perform editing an existing user
+    //   In this case, we set the title to “Edit User” 
+    //   We then proceed to retrieve the user object --//
+
+    //-- We need to set enableReinitialize={true} so that the form reinitializes when initialValues prop changes, 
+    //   i.e. we get our username and email populated from the firebase callback function --//
     componentDidMount() {
         if (this.id) {
             firebase.database().ref('/', + this.id)
@@ -42,7 +54,10 @@ class UserForm extends Component {
             <div>
                <h1>{this.title}</h1>
                 <Formik
-                    initialValues={{ email: '', username: '' }}
+                    enableReinitialize = { true }
+                    initialValues={{ 
+                        email: this.state.email, 
+                        username: this.state.username }}
                     validate={values => {
                         let errors = {};
                         if (!values.email) {
