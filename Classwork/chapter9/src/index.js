@@ -62,7 +62,8 @@ const firebaseConfig = {
     storageBucket: "chapter-9-40bce.appspot.com",
     messagingSenderId: "811685190538",
     appId: "1:811685190538:web:e856e80281428416cc4673",
-    measurementId: "G-0P1Z5KVSZF"
+    measurementId: "G-0P1Z5KVSZF",
+    databaseURL: "https://chapter-9-40bce-default-rtdb.europe-west1.firebasedatabase.app"
 };
 
 // Initialize Firebase

@@ -1,6 +1,11 @@
 import React, { Component } from 'react';
 import { Formik, Form, Field, ErrorMessage } from 'formik';
 
+import firebase from 'firebase/compat/app';
+import 'firebase/compat/auth';
+import 'firebase/compat/firestore';
+import 'firebase/compat/database';
+
 class UserForm extends Component {
     constructor(props) {
         super(props);
@@ -9,13 +14,13 @@ class UserForm extends Component {
     render() {
         return (
             <div>
-                <h1>Any place in your app!</h1>
+               <h1>{this.title}</h1>
                 <Formik
-                    initialValues={{ email: '', password: '' }}
+                    initialValues={{ email: '', username: '' }}
                     validate={values => {
                         let errors = {};
                         if (!values.email) {
-                            errors.email = 'Required';
+                            errors.email = 'Email Required';
                         } else if (
                             !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
                         ) {
@@ -23,16 +28,24 @@ class UserForm extends Component {
                         } else if (values.email.length < 10) {
                             errors.email = "Email address too short";
                         }
-                        if (!values.password) {
-                            errors.password = "Required";
-                        } else if (values.password.length < 8) {
-                            errors.password = "Password too short";
+                        if (!values.username) {
+                            errors.username = "Username Required";
+                        } else if (values.username.length < 3) {
+                            errors.username = "Username too short";
                         }
                         return errors;
                     }}
+
+                    //-- push generates and writes to a new child location with the value supplied
+                    //   It writes to the new child location using a unique key when we stored this key in user.key --//
                     onSubmit={(values, { setSubmitting }) => {
                         setTimeout(() => {
                             alert(JSON.stringify(values, null, 2));
+                            firebase.database().ref('/').push({
+                                username: values.username,
+                                email: values.email
+                            }).then(() => this.props.history.push("/"));
+
                             setSubmitting(false);
                         }, 400);
                     }}
@@ -43,9 +56,9 @@ class UserForm extends Component {
                             <span style= {{ color:"red", fontWeight:"bold" }}>
                                 <ErrorMessage name="email" component="div" />
                             </span>
-                            <Field type="password" name="password" />
+                            <Field type="username" name="username" />
                             <span style= {{ color:"red", fontWeight:"bold" }}>
-                                <ErrorMessage name="password" component="div" />
+                                <ErrorMessage name="username" component="div" />
                             </span>
                             <button type="submit" disabled={isSubmitting}>
                                 Submit
