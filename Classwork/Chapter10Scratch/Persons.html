@@ -64,8 +64,6 @@
         }
 
         var store = Redux.createStore(reducer);
-
-        //var store = Redux.createStore(reducer);
         store.subscribe(showState);
 
         store.dispatch(addPerson(1, "Greg", 5));
