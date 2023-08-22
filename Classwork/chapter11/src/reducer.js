@@ -10,7 +10,7 @@ function cartReducer(state, action) {
     //-- We use a switch statement to handle the two action types our reducer will receive --//
 
     //-- when we increment or decrement from totalCost, 
-    //   we have to use the parseInt method to convert string to numeric
+    //   we have to use the parseInt() method to convert string to numeric
     //   else we will get a string with the numbers concatenated instead of added/subtracted --//
     switch (action.type) {
         case "addProduct":
@@ -36,4 +36,5 @@ function cartReducer(state, action) {
             return state;
     }
 }
+
 export default cartReducer;

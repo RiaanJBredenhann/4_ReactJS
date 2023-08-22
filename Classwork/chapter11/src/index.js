@@ -7,8 +7,7 @@ import App from "./App";
 import 'bootstrap/dist/css/bootstrap.css';
 
 var destination = document.querySelector("#container");
-//-- we create our store with the createStore method that takes in our reducer cartReducer as argument
-//   We have imported cartReducer in the above import statements and will be implementing that later --//
+//-- we create our store with the createStore method that takes in our reducer, cartReducer, as argument --//
 var store = createStore(cartReducer);
 
 //-- We then pass in our store to the Provider component as a prop
