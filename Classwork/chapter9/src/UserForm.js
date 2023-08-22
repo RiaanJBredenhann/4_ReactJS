@@ -21,14 +21,13 @@ class UserForm extends Component {
             email: ""
         };
 
+        //-- we check if id is null, which means that we arrive at UserForm without a parameter 
+        //   and want to perform adding a new user
+        //   In this case, we use the default title of “New User” and do nothing in componentDidMount --//
         if (this.id) {
             this.title = "Edit User";
         }
     }
-
-    //-- we check if id is null, which means that we arrive at UserForm without a parameter 
-    //   and want to perform adding a new user
-    //   In this case, we use the default title of “New User” and do nothing in componentDidMount --//
 
     //-- If id is valid (not null), it means that we arrive at UserForm 
     //   with a parameter and want to perform editing an existing user
