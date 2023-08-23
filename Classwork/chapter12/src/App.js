@@ -1,5 +1,5 @@
 //-- we import useState from the react library as we will be using it for hooks --//
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button } from 'react-bootstrap';
 import useFetch from './useFetch';
