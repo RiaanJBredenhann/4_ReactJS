@@ -2,6 +2,8 @@
 import React, { useState, useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Button } from 'react-bootstrap';
+import useFetch from './useFetch';
+import Users from './Users'
 
 const App = () => {
   const postsUrl = "https://jsonplaceholder.typicode.com/posts";
@@ -16,22 +18,11 @@ const App = () => {
   //   The second element returned is assigned to setRequested 
   //   which is the setter to update this piece of state --//
   const [requested, setRequested] = useState(postsUrl);
-
-  //-- we declare an array data that holds the requested data in our state
-  //   we initialize data to an empty array [] --//
-  const [data, setData] = useState([]);
-
-  //-- we have to pass an empty array as a second argument to useEffect() to mimic componentDidMount()
-  //   if we don't, useEffect() will mimic componentDidUpdate() and will infinately make requests to posts
-  //   and will repeatedly update the state with setData, calling useEffect() again, causing an infinite loop --//
-  useEffect(() => {
-    fetch(requested)
-      .then(response => response.json())
-      .then(data => setData(data))
-  }, [])
+  const data = useFetch(requested)
 
   return (
     <div>
+      <Users />
       <Button variant="link" onClick={() => setRequested(postsUrl)}>
         Posts
       </Button>
