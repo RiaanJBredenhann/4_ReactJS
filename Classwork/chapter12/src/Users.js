@@ -5,7 +5,7 @@ const Users = () => {
     const users = useFetch("https://jsonplaceholder.typicode.com/users")
     return (
         <ul>
-            {users.map(el => (//
+            {users.map(el => (
                 <li key={el.id}>{el.name}</li>
             ))}
         </ul>
