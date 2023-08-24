@@ -12,7 +12,7 @@ const App = () => {
   //-- the useState() provides state to a functional component --//
   //-- setRequested is the setter method to update the value of this piece of state --//
 
-  //-- useState returns two elements
+  //-- useState() returns two elements
   //   the first element returned is assigned to requested 
   //   which contains the current value of this piece of state
   //   The second element returned is assigned to setRequested 
