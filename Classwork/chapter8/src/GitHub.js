@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import ReactLoading from 'react-loading';
-import { Media, Form, FormGroup, FormControl, Button, Nav, Navbar } from 'react-bootstrap';
+import { Media, Form, Button, Nav, } from 'react-bootstrap';
 
 class GitHub extends Component {
 
